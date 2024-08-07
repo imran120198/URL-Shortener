@@ -51,10 +51,10 @@ https://url-shortener-5p7p.onrender.com
    
     Method - POST
 
-  Request Body
-   ```
-      "originalURL" : your url
-   ```
+      Request Body
+       ```
+          "originalURL" : your url
+       ```
 
 4. For Redirect
 
@@ -62,10 +62,10 @@ https://url-shortener-5p7p.onrender.com
    
     Method - GET
 
-   * Example
+   #### For Example
   
-     ```
+   ```
       "originalURL":"https://www.gurucool.life/"
       "shortURL": "https://url-shortener-5p7p.onrender.com/url/redirect/GISOuB",
 
-     ```
+   ```
