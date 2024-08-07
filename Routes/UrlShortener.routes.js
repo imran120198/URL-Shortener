@@ -20,7 +20,6 @@ URLRouter.post("/shorturl", async (req, res) => {
   try {
     let { originalURL } = req.body;
     let shortURL = generateShortUrl();
-    shortURL = `https://shorturl/${shortURL}`;
     let url = new UrlShortenerModel({ originalURL, shortURL });
     await url.save();
     res.status(200).send({ msg: "ShortURL Created", url });
@@ -34,7 +33,7 @@ URLRouter.get("/redirect/:short", async (req, res) => {
     const short = req.params;
     console.log(short);
     const url = await UrlShortenerModel.findOne({
-      shortURL: `https://shorturl/${short.short}`,
+      shortURL: short.short,
     });
     console.log(url);
     if (url) {
