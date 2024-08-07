@@ -4,6 +4,8 @@ This URL Shortener service allow user to register, login, shorten URL and redire
 
 ## Deployment Link
 
+https://url-shortener-5p7p.onrender.com
+
 
 ## Tech Stack
 
@@ -15,7 +17,7 @@ This URL Shortener service allow user to register, login, shorten URL and redire
 
 1. For signup
 
-    Endpoint - 
+    Endpoint - https://url-shortener-5p7p.onrender.com/user/signup
    
     Method - POST
 
@@ -28,9 +30,9 @@ This URL Shortener service allow user to register, login, shorten URL and redire
     
     ```
 
-2. For Login -
+2. For Login
 
-    Endpoint -
+    Endpoint - https://url-shortener-5p7p.onrender.com/user/login
    
     Method - POST
 
@@ -45,7 +47,7 @@ This URL Shortener service allow user to register, login, shorten URL and redire
 
 3. For Shortening URL
 
-    Endpoint -
+    Endpoint - https://url-shortener-5p7p.onrender.com/url/shorturl
    
     Method - POST
 
@@ -56,6 +58,14 @@ This URL Shortener service allow user to register, login, shorten URL and redire
 
 4. For Redirect
 
-    Endpoint -
+    Endpoint - https://url-shortener-5p7p.onrender.com/url/redirect/:short
    
     Method - GET
+
+   * Example
+  
+     ```
+      "originalURL":"https://www.gurucool.life/"
+      "shortURL": "https://url-shortener-5p7p.onrender.com/url/redirect/GISOuB",
+
+     ```
