@@ -13,6 +13,10 @@ https://url-shortener-5p7p.onrender.com
 * Express.js
 * MongoDB
 
+## Documentation
+
+https://url-shortener-5p7p.onrender.com/apidocs/
+
 ## Endpoints
 
 1. For signup
@@ -69,3 +73,4 @@ https://url-shortener-5p7p.onrender.com
       "shortURL": "https://url-shortener-5p7p.onrender.com/url/redirect/GISOuB",
 
    ```
+
