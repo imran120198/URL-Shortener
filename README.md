@@ -70,7 +70,7 @@ https://url-shortener-5p7p.onrender.com/apidocs/
   
    ```
       "originalURL":"https://www.gurucool.life/"
-      "shortURL": "https://url-shortener-5p7p.onrender.com/url/redirect/GISOuB",
+      "shortURL": "https://url-shortener-5p7p.onrender.com/url/redirect/JUhpp1",
 
    ```
 
