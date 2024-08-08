@@ -16,6 +16,25 @@ function generateShortUrl(length = 6) {
   return shortUrl;
 }
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      UrlShortner:
+ *          type: object
+ *          properties:
+ *              _id:
+ *                  type: string
+ *                  description: The auto-generated id of the user
+ *              originalURL:
+ *                  type: string
+ *                  description: original url
+ *              shortURL:
+ *                  type: string
+ *                  description: shorten url
+ *
+ */
+
 URLRouter.post("/shorturl", async (req, res) => {
   try {
     let { originalURL } = req.body;
@@ -27,6 +46,29 @@ URLRouter.post("/shorturl", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+/**
+ * @swagger
+ * /url/shorturl:
+ *   post:
+ *     summary: URL shortener
+ *     tags: [Url Shortner]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UrlShortner'
+ *     responses:
+ *       200:
+ *         description: URL is successfully shorten
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UrlShortner'
+ *       500:
+ *         description: Some server error
+ */
 
 URLRouter.get("/redirect/:short", async (req, res) => {
   try {
@@ -45,6 +87,29 @@ URLRouter.get("/redirect/:short", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+/**
+ * @swagger
+ * /url/redirect/{short}:
+ *   get:
+ *     summary:  URL is successfully redirecting
+ *     tags: [Url Shortner]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UrlShortner'
+ *     responses:
+ *       200:
+ *         description: redirecting to original URL successfull
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UrlShortner'
+ *       500:
+ *         description: Some server error
+ */
 
 module.exports = {
   URLRouter,

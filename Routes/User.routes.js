@@ -5,8 +5,50 @@ const jwt = require("jsonwebtoken");
 const { UserModel } = require("../Models/User.schema");
 
 const UserRouter = Router();
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      User:
+ *          type: object
+ *          properties:
+ *              _id:
+ *                  type: string
+ *                  description: The auto-generated id of the user
+ *              username:
+ *                  type: string
+ *                  description: The username
+ *              password:
+ *                  type: string
+ *                  description: The user password
+ *
+ */
 
 // signup
+
+/**
+ * @swagger
+ * /user/signup:
+ *   post:
+ *     summary: To post the details of a new user
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: The user was successfully registered
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Some server error
+ */
+
 UserRouter.post("/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -33,6 +75,30 @@ UserRouter.post("/signup", async (req, res) => {
 });
 
 // login
+
+/**
+ * @swagger
+ * /user/login:
+ *   post:
+ *     summary: Login User
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: The user was successfully login
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Some server error
+ */
+
 UserRouter.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
