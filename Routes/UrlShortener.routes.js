@@ -4,13 +4,20 @@ const { UrlShortenerModel } = require("../Models/UrlShortener.schema");
 
 const URLRouter = Router();
 
+// Function to generate a short URL
 function generateShortUrl(length = 6) {
   const baseString = `${Date.now()}-${Math.random()}`;
-  console.log('baseString:', baseString)
+  console.log("baseString:", baseString);
   const hash = crypto.createHash("md5").update(baseString).digest("hex");
-  console.log('hash:', hash)
-  console.log(hash.substring(0, length))
+  console.log("hash:", hash);
+  console.log(hash.substring(0, length));
   return hash.substring(0, length);
+}
+
+// Function to validate URLs
+function isValidUrl(url) {
+  const regex = /^(http|https|www):\/\/[^ "]+$/;
+  return regex.test(url);
 }
 
 /**
@@ -34,6 +41,10 @@ function generateShortUrl(length = 6) {
 URLRouter.post("/shorturl", async (req, res) => {
   try {
     let { originalURL } = req.body;
+    if (!isValidUrl(originalURL)) {
+      return res.status(400).send({ msg: "Invalid URL format" });
+    }
+
     let existingUrl = await UrlShortenerModel.findOne({ originalURL });
     if (existingUrl) {
       return res
@@ -42,7 +53,7 @@ URLRouter.post("/shorturl", async (req, res) => {
     }
 
     let shortURL = generateShortUrl();
-    console.log('shortURL:', shortURL)
+    console.log("shortURL:", shortURL);
 
     while (await UrlShortenerModel.findOne({ shortURL })) {
       shortURL = generateShortUrl();
